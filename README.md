@@ -100,6 +100,8 @@ console.log(isUnitlessProperty('lineHeight'))
 // => true
 ```
 
+------
+
 ### `normalizeProperty(property)`
 Normalizes the `property` by unprefixing **and** camelCasing it.
 > Uses the [`camelCaseProperty`](#camelcasepropertyproperty) and [`unprefixProperty`](#unprefixpropertyproperty)-methods.
@@ -110,6 +112,8 @@ import { normalizeProperty } from 'css-in-js-utils'
 console.log(normalizeProperty('-webkit-transition-delay'))
 // => 'transitionDelay'
 ```
+
+------
 
 ### `unprefixProperty(property)`
 Removes the vendor prefix (if set) from the `property`.
@@ -123,6 +127,8 @@ console.log(unprefixProperty('WebkitTransition'))
 console.log(unprefixProperty('transitionDelay'))
 // => 'transitionDelay'
 ```
+
+------
 
 ### `unprefixValue(value)`
 Removes all vendor prefixes (if any) from the `value`.
