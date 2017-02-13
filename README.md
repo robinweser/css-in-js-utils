@@ -2,6 +2,7 @@
 A library that provides useful utilities functions for CSS-in-JS solutions.<br>
 They are intended to be used by CSS-in-JS library authors rather used directly.
 <br>
+
 <img alt="TravisCI" src="https://travis-ci.org/rofrischmann/css-in-js-utils.svg?branch=master">
 <a href="https://codeclimate.com/github/rofrischmann/css-in-js-utils/coverage"><img alt="Test Coverage" src="https://codeclimate.com/github/rofrischmann/css-in-js-utils/badges/coverage.svg"></a>
 <img alt="npm downloads" src="https://img.shields.io/npm/dm/css-in-js-utils.svg">
