@@ -13,6 +13,9 @@ They are intended to be used by CSS-in-JS library authors rather used directly.
 yarn add css-in-js-utils
 ```
 
+## Why?
+By now I have authored and collaborated on many different libraries and found I would rewrite the very same utility functions every time. That's why this repository is hosting small utilities especially built for CSS-in-JS solutions and tools. Even if there are tons of different libraries already, they all basically use the same mechanisms and utilities.
+
 ## Utilities
 * [`camelCaseProperty(property)`](#camelcasepropertyproperty)
 * [`hyphenateProperty(property)`](#hyphenatepropertyproperty)
