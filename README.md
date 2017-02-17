@@ -18,11 +18,14 @@ By now I have authored and collaborated on many different libraries and found I 
 
 ## Utilities
 * [`camelCaseProperty(property)`](#camelcasepropertyproperty)
+* [`cssifyDeclaration(property, value)`](#cssifydeclarationproperty-value)
+* [`cssifyObject(object)`](#cssifyobjectproperty)
 * [`hyphenateProperty(property)`](#hyphenatepropertyproperty)
 * [`isPrefixedProperty(property)`](#isprefixedpropertyproperty)
 * [`isPrefixedValue(value)`](#isprefixedvaluevalue)
 * [`isUnitlessProperty(property)`](#isunitlessproperty)
 * [`normalizeProperty(property)`](#normalizepropertyproperty)
+* [`resolveArrayValue(property, value)`](#resolvearrayvalueproperty-value)
 * [`unprefixProperty(property)`](#unprefixpropertyproperty)
 * [`unprefixValue(value)`](#unprefixvaluevalue)
 
@@ -34,11 +37,44 @@ Converts the `property` to camelCase.
 ```javascript
 import { camelCaseProperty } from 'css-in-js-utils'
 
-console.log(camelCaseProperty('padding-top'))
+camelCaseProperty('padding-top')
 // => 'paddingTop'
 
-console.log(camelCaseProperty('-webkit-transition'))
+camelCaseProperty('-webkit-transition')
 // => 'WebkitTransition'
+```
+
+------
+
+### `cssifyDeclaration(property, value)`
+Generates a CSS declaration (`property`:`value`) string.
+
+```javascript
+import { cssifyDeclaration } from 'css-in-js-utils'
+
+cssifyDeclaration('paddingTop', '400px')
+// => 'padding-top:400px'
+
+cssifyDeclaration('WebkitFlex', 3)
+// => '-webkit-flex:3'
+```
+
+------
+
+### `cssifyObject(object)`
+Generates a CSS string using all key-property pairs in `object`.
+It automatically removes declarations with value types other than `number` and `string`.
+
+```javascript
+import { cssifyObject } from 'css-in-js-utils'
+
+cssifyObject({
+  paddingTop: '400px',
+  paddingBottom: undefined,
+  WebkitFlex: 3,
+  _anyKey: [1, 2, 4]
+})
+// => 'padding-top:400px;-webkit-flex:3'
 ```
 
 ------
@@ -50,10 +86,10 @@ Converts the `property` to hyphen-case.
 ```javascript
 import { hyphenateProperty } from 'css-in-js-utils'
 
-console.log(hyphenateProperty('paddingTop'))
+hyphenateProperty('paddingTop')
 // => 'padding-top'
 
-console.log(hyphenateProperty('WebkitTransition'))
+hyphenateProperty('WebkitTransition')
 // => '-webkit-transition'
 ```
 
@@ -65,10 +101,10 @@ Checks if a `property` includes a vendor prefix.
 ```javascript
 import { isPrefixedProperty } from 'css-in-js-utils'
 
-console.log(isPrefixedProperty('paddingTop'))
+isPrefixedProperty('paddingTop')
 // => false
 
-console.log(isPrefixedProperty('WebkitTransition'))
+isPrefixedProperty('WebkitTransition')
 // => true
 ```
 
@@ -79,11 +115,11 @@ Checks if a `value` includes vendor prefixes.
 ```javascript
 import { isPrefixedValue } from 'css-in-js-utils'
 
-console.log(isPrefixedValue('200px'))
-console.log(isPrefixedValue(200))
+isPrefixedValue('200px')
+isPrefixedValue(200)
 // => false
 
-console.log(isPrefixedValue('-webkit-calc(100% - 50px)'))
+isPrefixedValue('-webkit-calc(100% - 50px)')
 // => true
 ```
 
@@ -96,11 +132,11 @@ Checks if a `property` accepts unitless values.
 ```javascript
 import { isUnitlessProperty } from 'css-in-js-utils'
 
-console.log(isUnitlessProperty('width'))
+isUnitlessProperty('width')
 // => false
 
-console.log(isUnitlessProperty('flexGrow'))
-console.log(isUnitlessProperty('lineHeight'))
+isUnitlessProperty('flexGrow')
+isUnitlessProperty('lineHeight')
 // => true
 ```
 
@@ -113,8 +149,25 @@ Normalizes the `property` by unprefixing **and** camelCasing it.
 ```javascript
 import { normalizeProperty } from 'css-in-js-utils'
 
-console.log(normalizeProperty('-webkit-transition-delay'))
+normalizeProperty('-webkit-transition-delay')
 // => 'transitionDelay'
+```
+
+------
+
+### `resolveArrayValue(property, value)`
+Concatenates array values to single CSS value.
+> Uses the [`hyphenateProperty`](#hyphenatepropertyproperty)-method.
+
+
+```javascript
+import { resolveArrayValue } from 'css-in-js-utils'
+
+resolveArrayValue('display', [ '-webkit-flex', 'flex' ])
+// => '-webkit-flex;display:flex'
+
+resolveArrayValue('paddingTop', [ 'calc(100% - 50px)', '100px' ])
+// => 'calc(100% - 50px);padding-top:100px'
 ```
 
 ------
@@ -125,10 +178,10 @@ Removes the vendor prefix (if set) from the `property`.
 ```javascript
 import { unprefixProperty } from 'css-in-js-utils'
 
-console.log(unprefixProperty('WebkitTransition'))
+unprefixProperty('WebkitTransition')
 // => 'transition'
 
-console.log(unprefixProperty('transitionDelay'))
+unprefixProperty('transitionDelay')
 // => 'transitionDelay'
 ```
 
@@ -140,10 +193,10 @@ Removes all vendor prefixes (if any) from the `value`.
 ```javascript
 import { unprefixValue } from 'css-in-js-utils'
 
-console.log(unprefixValue('-webkit-calc(-moz-calc(100% - 50px)/2)'))
+unprefixValue('-webkit-calc(-moz-calc(100% - 50px)/2)')
 // => 'calc(calc(100% - 50px)/2)'
 
-console.log(unprefixValue('100px'))
+unprefixValue('100px')
 // => '100px'
 ```
 
