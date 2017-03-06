@@ -1,4 +1,7 @@
 /* @flow */
+const dashRegex = /-([a-z])/g
+const msRegex = /^Ms/g
+
 export default function camelCaseProperty(property: string): string {
-  return property.replace(/-([a-z])/g, match => match[1].toUpperCase()).replace(/^Ms/g, 'ms')
+  return property.replace(dashRegex, match => match[1].toUpperCase()).replace(msRegex, 'ms')
 }

@@ -30,8 +30,7 @@
     "rootDir": "modules"
   },
   "dependencies": {
-    "hyphenate-style-name": "^1.0.2",
-    "unitless-css-property": "^1.0.2"
+    "hyphenate-style-name": "^1.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
