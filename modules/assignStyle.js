@@ -1,13 +1,13 @@
 /* @flow */
-export default function assignStyle(base: Object, ...extendingStyles: Array<Object>) {
+export default function assignStyle(base, ...extendingStyles) {
   for (let i = 0, len = extendingStyles.length; i < len; ++i) {
-    const style: Object = extendingStyles[i]
+    const style = extendingStyles[i]
 
-    for (const property: string in style) {
-      const value: any = style[property]
-      const baseValue: any = base[property]
+    for (const property in style) {
+      const value = style[property]
+      const baseValue = base[property]
 
-      if (baseValue instanceof Object) {
+      if (typeof baseValue === 'object') {
         if (Array.isArray(baseValue)) {
           if (Array.isArray(value)) {
             base[property] = [...baseValue, ...value]
@@ -17,7 +17,7 @@ export default function assignStyle(base: Object, ...extendingStyles: Array<Obje
           continue
         }
 
-        if (value instanceof Object && !Array.isArray(value)) {
+        if (typeof value === 'object' && !Array.isArray(value)) {
           base[property] = assignStyle({}, baseValue, value)
           continue
         }
