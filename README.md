@@ -19,11 +19,11 @@ By now I have authored and collaborated on many different libraries and found I 
 ## Utilities
 * [`camelCaseProperty(property)`](#camelcasepropertyproperty)
 * [`cssifyDeclaration(property, value)`](#cssifydeclarationproperty-value)
-* [`cssifyObject(object)`](#cssifyobjectproperty)
+* [`cssifyObject(object)`](#cssifyobjectobject)
 * [`hyphenateProperty(property)`](#hyphenatepropertyproperty)
 * [`isPrefixedProperty(property)`](#isprefixedpropertyproperty)
 * [`isPrefixedValue(value)`](#isprefixedvaluevalue)
-* [`isUnitlessProperty(property)`](#isunitlessproperty)
+* [`isUnitlessProperty(property)`](#isunitlesspropertyproperty)
 * [`normalizeProperty(property)`](#normalizepropertyproperty)
 * [`resolveArrayValue(property, value)`](#resolvearrayvalueproperty-value)
 * [`unprefixProperty(property)`](#unprefixpropertyproperty)
@@ -127,7 +127,6 @@ isPrefixedValue('-webkit-calc(100% - 50px)')
 
 ### `isUnitlessProperty(property)`
 Checks if a `property` accepts unitless values.
-> Directly mirrors [unitless-css-property](https://github.com/rofrischmann/unitless-css-property).
 
 ```javascript
 import { isUnitlessProperty } from 'css-in-js-utils'
@@ -137,6 +136,7 @@ isUnitlessProperty('width')
 
 isUnitlessProperty('flexGrow')
 isUnitlessProperty('lineHeight')
+isUnitlessProperty('line-height')
 // => true
 ```
 

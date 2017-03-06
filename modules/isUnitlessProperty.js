@@ -1,7 +1,7 @@
 /* @flow */
 import hyphenateProperty from './hyphenateProperty'
 
-const unitlessProperties = {
+const unitlessProperties: Object = {
   borderImageOutset: true,
   borderImageSlice: true,
   borderImageWidth: true,
@@ -13,7 +13,6 @@ const unitlessProperties = {
   widows: true,
   zIndex: true,
   zoom: true,
-
   // SVG-related properties
   fillOpacity: true,
   floodOpacity: true,
@@ -25,8 +24,8 @@ const unitlessProperties = {
   strokeWidth: true
 }
 
-const prefixedUnitlessProperties = [
-'animationIterationCount',
+const prefixedUnitlessProperties: Array<string> = [
+  'animationIterationCount',
   'boxFlex',
   'boxFlexGroup',
   'boxOrdinalGroup',
@@ -43,25 +42,25 @@ const prefixedUnitlessProperties = [
   'lineClamp'
 ]
 
-const prefixes = ['Webkit', 'ms', 'Moz', 'O']
+const prefixes: Array<string> = ['Webkit', 'ms', 'Moz', 'O']
 
-function getPrefixedProperty(prefix, property) {
+function getPrefixedProperty(prefix: string, property: string): string {
   return prefix + property.charAt(0).toUpperCase() + property.slice(1)
 }
 
 // add all prefixed properties to the unitless properties
 for (let i = 0, len = prefixedUnitlessProperties.length; i < len; ++i) {
+  const property = prefixedUnitlessProperties[i]
   unitlessProperties[property] = true
 
-  for (let j = 0, jLen = prefixes.length; j < jLen; ++i) {
-    unitlessProperties[getPrefixedProperty(prefix, property)] = true
+  for (let j = 0, jLen = prefixes.length; j < jLen; ++j) {
+    unitlessProperties[getPrefixedProperty(prefixes[j], property)] = true
   }
 }
 
-
 // add all hypenated properties as well
 for (const property in unitlessProperties) {
-  unitlessProperties[hyphenateStyleName(property)] = true
+  unitlessProperties[hyphenateProperty(property)] = true
 }
 
 export default function isUnitlessProperty(property: string): boolean {

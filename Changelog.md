@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.0.3
+* performance improvements
+
 ### 1.0.2
 * added `resolveArrayValue` and `assignStyle`
 

@@ -1,5 +1,5 @@
 /* @flow */
-export default function assignStyle(base, ...extendingStyles) {
+export default function assignStyle(base: Object, ...extendingStyles: Array<Object>) {
   for (let i = 0, len = extendingStyles.length; i < len; ++i) {
     const style = extendingStyles[i]
 
