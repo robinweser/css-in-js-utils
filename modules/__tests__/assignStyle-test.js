@@ -75,4 +75,31 @@ describe('Assinging styles', () => {
       foo: 'bar'
     })
   })
+
+  it('should overwrite previous values when both values are array', () => {
+    const ob1 = { fontSize: ['10px', '10rem'] }
+    const ob2 = { fontSize: ['10px', '20vw'] }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: ['10px', '20vw'] })
+  })
+
+  it('should overwrite previous values when only the last value is an array', () => {
+    const ob1 = { fontSize: 10 }
+    const ob2 = { fontSize: ['10px', '20vw'] }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: ['10px', '20vw'] })
+  })
+
+  it('should overwrite previous values when only the first value is an array', () => {
+    const ob1 = { fontSize: ['10px', '10rem'] }
+    const ob2 = { fontSize: 20 }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: 20 })
+  })
 })
