@@ -14,6 +14,7 @@ yarn add css-in-js-utils
 By now I have authored and collaborated on many different libraries and found I would rewrite the very same utility functions every time. That's why this repository is hosting small utilities especially built for CSS-in-JS solutions and tools. Even if there are tons of different libraries already, they all basically use the same mechanisms and utilities.
 
 ## Utilities
+* [`assignStyle(base, ...extend)`](#assignstylebase-extend)
 * [`camelCaseProperty(property)`](#camelcasepropertyproperty)
 * [`cssifyDeclaration(property, value)`](#cssifydeclarationproperty-value)
 * [`cssifyObject(object)`](#cssifyobjectobject)
@@ -25,6 +26,36 @@ By now I have authored and collaborated on many different libraries and found I 
 * [`resolveArrayValue(property, value)`](#resolvearrayvalueproperty-value)
 * [`unprefixProperty(property)`](#unprefixpropertyproperty)
 * [`unprefixValue(value)`](#unprefixvaluevalue)
+*
+------
+
+### `assignStyle(base, ...extend)`
+Merges deep style objects similar to `Object.assign`.
+
+```javascript
+import { assignStyle } from 'css-in-js-utils'
+
+assignStyle(
+  { color: 'red', backgroundColor: 'black' },
+  { color: 'blue' }
+)
+// => { color: 'blue', backgroundColor: 'black' }
+
+assignStyle(
+  {
+    color: 'red',
+    ':hover': {
+      backgroundColor: 'black'
+    }
+  },
+  { 
+    ':hover': {
+      backgroundColor: 'blue'
+    }
+  }
+)
+// => { color: 'red', ':hover': { backgroundColor: 'blue' }}
+```
 
 ------
 
