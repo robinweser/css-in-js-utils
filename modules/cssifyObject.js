@@ -6,7 +6,8 @@ export default function cssifyObject(style: Object): string {
 
   for (const property in style) {
     const value = style[property]
-    if (typeof value !== 'string' && typeof value !== 'number') {
+    const valueType = typeof value
+    if (valueType !== 'string' && valueType !== 'number' && !Array.isArray(value)) {
       continue
     }
 

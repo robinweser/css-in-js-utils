@@ -26,4 +26,13 @@ describe('Cssifying objects', () => {
       })
     ).toEqual('-webkit-justify-content:center;-ms-flex-align:center')
   })
+
+  it('should convert array properties', () => {
+    expect(
+      cssifyObject({
+        display: ['-webkit-flex', 'flex'],
+        color: 'red'
+      })
+    ).toEqual('display:-webkit-flex;display:flex;color:red')
+  })
 })
