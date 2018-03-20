@@ -102,4 +102,16 @@ describe('Assinging styles', () => {
 
     expect(newOb).toEqual({ fontSize: 20 })
   })
+
+  it('should not recursively call assignStyle for null values', () => {
+    const ob1 = { fontSize: 10 }
+    const ob2 = { margin: null }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({
+      fontSize: 10,
+      margin: null
+    })
+  })
 })
