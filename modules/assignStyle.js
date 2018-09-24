@@ -14,7 +14,7 @@ export default function assignStyle(
       const value = style[property]
       const baseValue = base[property]
 
-      if (baseValue) {
+      if (baseValue && value) {
         if (Array.isArray(baseValue)) {
           base[property] = filterUniqueArray(baseValue.concat(value))
           continue
