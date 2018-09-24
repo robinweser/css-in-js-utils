@@ -1,5 +1,8 @@
 # Changelog
 
+### 3.0.0
+* `assignStyle` now correctly merges array values without duplicates where the last occurence always wins in order
+
 ### 2.0.0
 * improve `assignStyle` to replace arrays
 
