@@ -2,7 +2,9 @@ import assignStyle from '../assignStyle'
 
 describe('Assinging styles', () => {
   it('should merge properties', () => {
-    expect(assignStyle({ color: 'red' }, { fontSize: 12 }, { lineHeight: 1 })).toEqual({
+    expect(
+      assignStyle({ color: 'red' }, { fontSize: 12 }, { lineHeight: 1 })
+    ).toEqual({
       color: 'red',
       fontSize: 12,
       lineHeight: 1
@@ -10,7 +12,9 @@ describe('Assinging styles', () => {
   })
 
   it('should overwrite properties from right to left', () => {
-    expect(assignStyle({ fontSize: 12 }, { fontSize: 16 }, { fontSize: 11 })).toEqual({ fontSize: 11 })
+    expect(
+      assignStyle({ fontSize: 12 }, { fontSize: 16 }, { fontSize: 11 })
+    ).toEqual({ fontSize: 11 })
   })
 
   it('should merge nested objects', () => {
@@ -66,6 +70,7 @@ describe('Assinging styles', () => {
       color: 'red',
       fontSize: 12
     })
+
     expect(ob1).toEqual(newOb)
 
     newOb.foo = 'bar'
@@ -76,30 +81,57 @@ describe('Assinging styles', () => {
     })
   })
 
-  it('should overwrite previous values when both values are array', () => {
-    const ob1 = { fontSize: ['10px', '10rem'] }
-    const ob2 = { fontSize: ['10px', '20vw'] }
-
-    const newOb = assignStyle({}, ob1, ob2)
-
-    expect(newOb).toEqual({ fontSize: ['10px', '20vw'] })
-  })
-
-  it('should overwrite previous values when only the last value is an array', () => {
-    const ob1 = { fontSize: 10 }
-    const ob2 = { fontSize: ['10px', '20vw'] }
-
-    const newOb = assignStyle({}, ob1, ob2)
-
-    expect(newOb).toEqual({ fontSize: ['10px', '20vw'] })
-  })
-
-  it('should overwrite previous values when only the first value is an array', () => {
+  it('should merge array values (array-single)', () => {
     const ob1 = { fontSize: ['10px', '10rem'] }
     const ob2 = { fontSize: 20 }
 
     const newOb = assignStyle({}, ob1, ob2)
 
-    expect(newOb).toEqual({ fontSize: 20 })
+    expect(newOb).toEqual({ fontSize: ['10px', '10rem', 20] })
+  })
+
+  it('should merge array values (single-array)', () => {
+    const ob1 = { fontSize: 10 }
+    const ob2 = { fontSize: ['10px', '20vw'] }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: [10, '10px', '20vw'] })
+  })
+
+  it('should merge array values (array-array)', () => {
+    const ob1 = { fontSize: ['20pt', 10] }
+    const ob2 = { fontSize: ['10px', '20vw'] }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: ['20pt', 10, '10px', '20vw'] })
+  })
+
+  it('should merge array values without duplicates (array-single)', () => {
+    const ob1 = { fontSize: ['10px', '10rem'] }
+    const ob2 = { fontSize: '10px' }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: ['10rem', '10px'] })
+  })
+
+  it('should merge array values without duplicates (array-array)', () => {
+    const ob1 = { fontSize: ['20px', '10rem', '10px'] }
+    const ob2 = { fontSize: ['10px', 5, '10rem'] }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: ['20px', '10px', 5, '10rem'] })
+  })
+
+  it('should merge array values without duplicates (single-array)', () => {
+    const ob1 = { fontSize: '10px' }
+    const ob2 = { fontSize: ['10rem', '10px'] }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({ fontSize: ['10rem', '10px'] })
   })
 })
