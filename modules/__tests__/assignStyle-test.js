@@ -81,6 +81,18 @@ describe('Assinging styles', () => {
     })
   })
 
+  it('should not recursively call assignStyle for null values', () => {
+    const ob1 = { fontSize: 10 }
+    const ob2 = { margin: null }
+
+    const newOb = assignStyle({}, ob1, ob2)
+
+    expect(newOb).toEqual({
+      fontSize: 10,
+      margin: null
+    })
+  })
+
   it('should merge array values (array-single)', () => {
     const ob1 = { fontSize: ['10px', '10rem'] }
     const ob2 = { fontSize: 20 }
