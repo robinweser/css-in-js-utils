@@ -30,7 +30,8 @@ By now I have authored and collaborated on many different libraries and found I 
 ------
 
 ### `assignStyle(base, ...extend)`
-Merges deep style objects similar to `Object.assign`.
+Merges deep style objects similar to `Object.assign`.<br>
+It also merges array values into a single array whithout creating duplicates. The last occurence of every item wins.
 
 ```javascript
 import { assignStyle } from 'css-in-js-utils'
