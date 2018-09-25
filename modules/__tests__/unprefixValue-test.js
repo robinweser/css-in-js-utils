@@ -2,7 +2,9 @@ import unprefixValue from '../unprefixValue'
 
 describe('Unprefixing values', () => {
   it('should unprefix the value', () => {
-    expect(unprefixValue('-webkit-calc(100% - 20px)')).toEqual('calc(100% - 20px)')
+    expect(unprefixValue('-webkit-calc(100% - 20px)')).toEqual(
+      'calc(100% - 20px)'
+    )
     expect(unprefixValue('-ms-transition')).toEqual('transition')
   })
 
