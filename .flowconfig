@@ -4,4 +4,4 @@
 # .*/node_modules/babylon/*.*
 
 [version]
-^0.38.0
+^0.81.0
