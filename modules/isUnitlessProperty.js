@@ -36,10 +36,14 @@ const prefixedUnitlessProperties: Array<string> = [
   'flexShrink',
   'flexNegative',
   'flexOrder',
-  'gridRow',
   'gridColumn',
-  'order',
-  'lineClamp'
+  'gridColumnEnd',
+  'gridColumnStart',
+  'gridRow',
+  'gridRowEnd',
+  'gridRowStart',
+  'lineClamp',
+  'order'
 ]
 
 const prefixes: Array<string> = ['Webkit', 'ms', 'Moz', 'O']
