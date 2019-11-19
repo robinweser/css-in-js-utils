@@ -1,6 +1,6 @@
 {
   "name": "css-in-js-utils",
-  "version": "3.0.2",
+  "version": "3.0.4",
   "description": "Useful utility functions for CSS in JS solutions",
   "main": "lib/index.js",
   "module": "es/index.js",

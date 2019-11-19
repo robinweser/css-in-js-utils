@@ -11,7 +11,7 @@ import resolveArrayValue from './resolveArrayValue'
 import unprefixProperty from './unprefixProperty'
 import unprefixValue from './unprefixValue'
 
-export default {
+export {
   assignStyle,
   camelCaseProperty,
   cssifyDeclaration,
