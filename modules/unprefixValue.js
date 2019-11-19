@@ -1,9 +1,8 @@
-/* @flow */
-const prefixRegex = /(-ms-|-webkit-|-moz-|-o-)/g
+const RE = /(-ms-|-webkit-|-moz-|-o-)/g
 
-export default function unprefixValue(value: any): any {
+export default function unprefixValue(value) {
   if (typeof value === 'string') {
-    return value.replace(prefixRegex, '')
+    return value.replace(RE, '')
   }
 
   return value

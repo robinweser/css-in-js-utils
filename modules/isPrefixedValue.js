@@ -1,6 +1,5 @@
-/* @flow */
-const regex = /-webkit-|-moz-|-ms-/
+const RE = /-webkit-|-moz-|-ms-/
 
-export default function isPrefixedValue(value: any): boolean {
-  return typeof value === 'string' && regex.test(value)
+export default function isPrefixedValue(value) {
+  return typeof value === 'string' && RE.test(value)
 }

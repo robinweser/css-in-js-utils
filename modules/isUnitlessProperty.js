@@ -1,7 +1,6 @@
-/* @flow */
 import hyphenateProperty from './hyphenateProperty'
 
-const unitlessProperties: Object = {
+const unitlessProperties = {
   borderImageOutset: true,
   borderImageSlice: true,
   borderImageWidth: true,
@@ -24,7 +23,7 @@ const unitlessProperties: Object = {
   strokeWidth: true
 }
 
-const prefixedUnitlessProperties: Array<string> = [
+const prefixedUnitlessProperties = [
   'animationIterationCount',
   'boxFlex',
   'boxFlexGroup',
@@ -46,9 +45,9 @@ const prefixedUnitlessProperties: Array<string> = [
   'order'
 ]
 
-const prefixes: Array<string> = ['Webkit', 'ms', 'Moz', 'O']
+const prefixes = ['Webkit', 'ms', 'Moz', 'O']
 
-function getPrefixedProperty(prefix: string, property: string): string {
+function getPrefixedProperty(prefix, property) {
   return prefix + property.charAt(0).toUpperCase() + property.slice(1)
 }
 
@@ -67,6 +66,6 @@ for (const property in unitlessProperties) {
   unitlessProperties[hyphenateProperty(property)] = true
 }
 
-export default function isUnitlessProperty(property: string): boolean {
+export default function isUnitlessProperty(property) {
   return unitlessProperties.hasOwnProperty(property)
 }

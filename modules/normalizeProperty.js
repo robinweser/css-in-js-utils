@@ -1,7 +1,6 @@
-/* @flow */
 import camelCaseProperty from './camelCaseProperty'
 import unprefixProperty from './unprefixProperty'
 
-export default function normalizeProperty(property: string): string {
+export default function normalizeProperty(property) {
   return unprefixProperty(camelCaseProperty(property))
 }

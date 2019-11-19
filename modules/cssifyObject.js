@@ -1,8 +1,7 @@
-/* @flow */
 import cssifyDeclaration from './cssifyDeclaration'
 
-export default function cssifyObject(style: Object): string {
-  let css: string = ''
+export default function cssifyObject(style) {
+  let css = ''
 
   for (const property in style) {
     const value = style[property]

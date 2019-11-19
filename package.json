@@ -3,53 +3,61 @@
   "version": "3.0.2",
   "description": "Useful utility functions for CSS in JS solutions",
   "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "sideEffects": false,
   "files": [
-    "LICENSE",
-    "README.md",
-    "lib/"
+    "lib/**",
+    "es/**"
   ],
   "keywords": [
     "css",
     "cssinjs",
-    "utils"
+    "utils",
+    "small"
   ],
-  "repository": "https://github.com/rofrischmann/css-in-js-utils.git",
-  "author": "Robin Frischmann <robin@rofrischmann.de>",
+  "repository": "https://github.com/robinweser/css-in-js-utils.git",
+  "author": "robinweser <contact@weser.io>",
   "license": "MIT",
   "scripts": {
-    "babel": "babel -d lib modules",
-    "check": "npm run format && npm run lint && npm run test:coverage && npm run flow",
+    "build": "yarn run clean && yarn build:lib && yarn build:es",
+    "build:lib": "cross-env BABEL_ENV=commonjs babel modules --out-dir lib --ignore __tests__",
+    "build:es": "babel modules --out-dir es --ignore __tests__",
+    "clean": "rimraf es lib coverage",
+    "check": "yarn lint && yarn test:coverage",
     "format": "prettier --write \"modules/**/*.js\"",
-    "flow": "flow",
-    "lint": "eslint modules",
-    "release": "npm run check && npm run babel && npm publish",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "lint": "eslint modules/**/*.js",
+    "release": "git pull --rebase && yarn run check && yarn build && npm publish",
+    "test": "cross-env BABEL_ENV=commonjs jest",
+    "test:coverage": "cross-env BABEL_ENV=commonjs jest --coverage",
+    "watch": "yarn test -- --watch"
   },
   "jest": {
-    "rootDir": "modules"
+    "moduleDirectories": [
+      "node_modules",
+      "modules"
+    ]
   },
   "dependencies": {
-    "hyphenate-style-name": "^1.0.2"
+    "hyphenate-style-name": "^1.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.22.1",
-    "babel-core": "^6.22.1",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^7.1.1",
-    "babel-jest": "^18.0.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0",
-    "codeclimate-test-reporter": "^0.4.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "cross-env": "^5.2.0",
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-flowtype": "^2.30.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
-    "flow-bin": "^0.81.0",
-    "jest": "^18.1.0",
-    "prettier": "^1.7.3"
+    "jest": "^23.6.0",
+    "prettier": "^1.7.4",
+    "rimraf": "^2.6.1"
   }
 }

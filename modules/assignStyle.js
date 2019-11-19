@@ -1,12 +1,8 @@
-/* @flow */
-function filterUniqueArray(arr: Array<any>): Array<any> {
+function filterUniqueArray(arr) {
   return arr.filter((val, index) => arr.lastIndexOf(val) === index)
 }
 
-export default function assignStyle(
-  base: Object,
-  ...extendingStyles: Array<Object>
-) {
+export default function assignStyle(base, ...extendingStyles) {
   for (let i = 0, len = extendingStyles.length; i < len; ++i) {
     const style = extendingStyles[i]
 

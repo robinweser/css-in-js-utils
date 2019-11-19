@@ -1,0 +1,23 @@
+{
+  "files.exclude": {
+    "**/._*": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.Spotlight-V100": true,
+    "**/.Trashes": true,
+    "**/*~": true,
+    "**/*.diff": true,
+    "**/*.err": true,
+    "**/*.log": true,
+    "**/*.orig": true,
+    "**/*.pyc": true,
+    "**/*.rej": true,
+    "**/*.sass-cache": true,
+    "**/*.sw?": true,
+    "**/*.vi": true,
+    "**/node_modules": true,
+    "**/es": true,
+    "**/coverage": true,
+    "**/lib": true
+  }
+}

@@ -1,9 +1,10 @@
-/* @flow */
-const dashRegex = /-([a-z])/g
-const msRegex = /^Ms/g
+const DASH = /-([a-z])/g
+const MS = /^Ms/g
 
-export default function camelCaseProperty(property: string): string {
-  return property
-    .replace(dashRegex, match => match[1].toUpperCase())
-    .replace(msRegex, 'ms')
+function toUpper(match) {
+  return match[1].toUpperCase()
+}
+
+export default function camelCaseProperty(property) {
+  return property.replace(DASH, toUpper).replace(MS, 'ms')
 }

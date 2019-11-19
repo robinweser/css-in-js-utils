@@ -1,4 +1,3 @@
-/* @flow */
 import assignStyle from './assignStyle'
 import camelCaseProperty from './camelCaseProperty'
 import cssifyDeclaration from './cssifyDeclaration'
