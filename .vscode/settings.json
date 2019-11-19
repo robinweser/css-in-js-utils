@@ -15,9 +15,9 @@
     "**/*.sass-cache": true,
     "**/*.sw?": true,
     "**/*.vi": true,
-    "**/node_modules": true
-    // "**/es": true,
-    // "**/coverage": true,
-    // "**/lib": true
+    "**/node_modules": true,
+    "**/es": true,
+    "**/coverage": true,
+    "**/lib": true
   }
 }
