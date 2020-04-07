@@ -1,6 +1,6 @@
 const RE = /^(ms|Webkit|Moz|O)/
 
-export default function unprefixProperty(property) {
+export default function unprefixProperty(property: string) {
   const propertyWithoutPrefix = property.replace(RE, '')
   return (
     propertyWithoutPrefix.charAt(0).toLowerCase() +

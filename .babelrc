@@ -5,7 +5,8 @@
       {
         "modules": false
       }
-    ]
+    ],
+    "@babel/typescript"
   ],
   "env": {
     "commonjs": {
