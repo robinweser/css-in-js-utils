@@ -1,6 +1,6 @@
 import hyphenateProperty from './hyphenateProperty'
 
-const unitlessProperties = {
+const unitlessProperties: { [key: string]: boolean } = {
   borderImageOutset: true,
   borderImageSlice: true,
   borderImageWidth: true,
@@ -20,7 +20,7 @@ const unitlessProperties = {
   strokeDashoffset: true,
   strokeMiterlimit: true,
   strokeOpacity: true,
-  strokeWidth: true
+  strokeWidth: true,
 }
 
 const prefixedUnitlessProperties = [
@@ -42,12 +42,12 @@ const prefixedUnitlessProperties = [
   'gridRowEnd',
   'gridRowStart',
   'lineClamp',
-  'order'
+  'order',
 ]
 
 const prefixes = ['Webkit', 'ms', 'Moz', 'O']
 
-function getPrefixedProperty(prefix, property) {
+function getPrefixedProperty(prefix: string, property: string) {
   return prefix + property.charAt(0).toUpperCase() + property.slice(1)
 }
 
@@ -66,6 +66,6 @@ for (const property in unitlessProperties) {
   unitlessProperties[hyphenateProperty(property)] = true
 }
 
-export default function isUnitlessProperty(property) {
+export default function isUnitlessProperty(property: string) {
   return unitlessProperties.hasOwnProperty(property)
 }

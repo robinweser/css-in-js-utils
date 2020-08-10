@@ -1,8 +1,19 @@
-function filterUniqueArray(arr) {
+function filterUniqueArray(arr: any[]) {
   return arr.filter((val, index) => arr.lastIndexOf(val) === index)
 }
 
-export default function assignStyle(base, ...extendingStyles) {
+type StyleObject = {
+  [key: string]:
+    | string
+    | number
+    | StyleObject
+    | (string | number | StyleObject)[]
+}
+
+export default function assignStyle(
+  base: StyleObject,
+  ...extendingStyles: StyleObject[]
+) {
   for (let i = 0, len = extendingStyles.length; i < len; ++i) {
     const style = extendingStyles[i]
 
@@ -22,7 +33,7 @@ export default function assignStyle(base, ...extendingStyles) {
         }
 
         if (typeof value === 'object') {
-          base[property] = assignStyle({}, baseValue, value)
+          base[property] = assignStyle({}, baseValue as StyleObject, value)
           continue
         }
       }

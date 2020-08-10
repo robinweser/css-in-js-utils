@@ -1,6 +1,14 @@
 import cssifyDeclaration from './cssifyDeclaration'
 
-export default function cssifyObject(style) {
+export type StyleObject = {
+  [key: string]:
+    | string
+    | number
+    | StyleObject
+    | (string | number | StyleObject)[]
+}
+
+export default function cssifyObject(style: StyleObject) {
   let css = ''
 
   for (const property in style) {

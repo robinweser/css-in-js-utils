@@ -23,5 +23,5 @@ export {
   normalizeProperty,
   resolveArrayValue,
   unprefixProperty,
-  unprefixValue
+  unprefixValue,
 }
