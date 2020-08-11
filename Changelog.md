@@ -1,22 +1,34 @@
 # Changelog
 
+### 3.1.0
+
+- added a cache to improve performance for recuring properties
+- added TypeScript support
+
 ### 3.0.2
-* added new unitless properties
+
+- added new unitless properties
 
 ### 3.0.0
-* `assignStyle` now correctly merges array values without duplicates where the last occurence always wins in order
+
+- `assignStyle` now correctly merges array values without duplicates where the last occurence always wins in order
 
 ### 2.0.0
-* improve `assignStyle` to replace arrays
+
+- improve `assignStyle` to replace arrays
 
 ### 1.0.3
-* performance improvements
+
+- performance improvements
 
 ### 1.0.2
-* added `resolveArrayValue` and `assignStyle`
+
+- added `resolveArrayValue` and `assignStyle`
 
 ### 1.0.1
-* added `cssifyDeclaration` and `cssifyObject`
+
+- added `cssifyDeclaration` and `cssifyObject`
 
 ### 1.0.0
+
 Initial version
