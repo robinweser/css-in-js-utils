@@ -8,4 +8,8 @@ describe('Camel casing properties', () => {
     )
     expect(camelCaseProperty('-ms-transition')).toEqual('msTransition')
   })
+  it('should return same output on same input', () => {
+    expect(camelCaseProperty('border-color')).toEqual('borderColor')
+    expect(camelCaseProperty('border-color')).toEqual('borderColor')
+  })
 })
