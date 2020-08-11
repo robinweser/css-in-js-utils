@@ -13,7 +13,7 @@ describe('Cssifying objects', () => {
     expect(
       cssifyObject({
         fontSize: '12px',
-        color: 'red'
+        color: 'red',
       })
     ).toEqual('font-size:12px;color:red')
   })
@@ -22,7 +22,7 @@ describe('Cssifying objects', () => {
     expect(
       cssifyObject({
         WebkitJustifyContent: 'center',
-        msFlexAlign: 'center'
+        msFlexAlign: 'center',
       })
     ).toEqual('-webkit-justify-content:center;-ms-flex-align:center')
   })

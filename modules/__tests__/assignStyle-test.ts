@@ -7,7 +7,7 @@ describe('Assinging styles', () => {
     ).toEqual({
       color: 'red',
       fontSize: 12,
-      lineHeight: 1
+      lineHeight: 1,
     })
   })
 
@@ -23,24 +23,24 @@ describe('Assinging styles', () => {
         {
           fontSize: 12,
           ob2: { color: 'red' },
-          ob3: { color: 'red' }
+          ob3: { color: 'red' },
         },
         {
           fontSize: 16,
-          ob2: { fontSize: 12 }
+          ob2: { fontSize: 12 },
         },
         {
           fontSize: 11,
-          ob3: { color: 'blue' }
+          ob3: { color: 'blue' },
         }
       )
     ).toEqual({
       fontSize: 11,
       ob2: {
         color: 'red',
-        fontSize: 12
+        fontSize: 12,
       },
-      ob3: { color: 'blue' }
+      ob3: { color: 'blue' },
     })
   })
 
@@ -52,7 +52,7 @@ describe('Assinging styles', () => {
 
     expect(newOb).toEqual({
       color: 'red',
-      fontSize: 12
+      fontSize: 12,
     })
 
     newOb.foo = 'bar'
@@ -68,7 +68,7 @@ describe('Assinging styles', () => {
 
     expect(newOb).toEqual({
       color: 'red',
-      fontSize: 12
+      fontSize: 12,
     })
 
     expect(ob1).toEqual(newOb)
@@ -77,7 +77,7 @@ describe('Assinging styles', () => {
     expect(ob1).toEqual({
       color: 'red',
       fontSize: 12,
-      foo: 'bar'
+      foo: 'bar',
     })
   })
 
@@ -89,7 +89,7 @@ describe('Assinging styles', () => {
 
     expect(newOb).toEqual({
       fontSize: 10,
-      margin: null
+      margin: null,
     })
   })
 
@@ -155,7 +155,7 @@ describe('Assinging styles', () => {
 
     expect(newOb).toEqual({
       fontSize: 10,
-      margin: null
+      margin: null,
     })
   })
 })
