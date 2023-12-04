@@ -2,7 +2,7 @@ type CacheObject = {
   [key: string]: string
 }
 
-const CSS_VARIABLE = /^--/;
+const CSS_VARIABLE = /^--/
 const DASH = /-([a-z])/g
 const MS = /^Ms/g
 const cache: CacheObject = {}
