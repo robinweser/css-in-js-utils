@@ -11,19 +11,21 @@ export type StyleObject = {
 export default function cssifyObject(style: StyleObject) {
   let css = ''
 
-  for (const property in style) {
+  const keys = Object.keys(style)
+  for (let i = 0, len = keys.length; i < len; i++) {
+    const property = keys[i]
     const value = style[property]
     if (typeof value !== 'string' && typeof value !== 'number') {
-      continue
-    }
+      // do nothing
+    } else {
+      // prevents the semicolon after
+      // the last rule declaration
+      if (css) {
+        css += ';'
+      }
 
-    // prevents the semicolon after
-    // the last rule declaration
-    if (css) {
-      css += ';'
+      css += cssifyDeclaration(property, value)
     }
-
-    css += cssifyDeclaration(property, value)
   }
 
   return css
